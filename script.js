@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const botonCopiar = document.getElementById('copy-button');
     const imagenRobot = document.querySelector('.imagen');
 
-    //reglas de encriptado
+    // Reglas de encriptado
     const llavesEncriptacion = {
         'e': 'enter',
         'i': 'imes',
@@ -24,24 +24,24 @@ document.addEventListener('DOMContentLoaded', function() {
         'ufat': 'u'
     };
 
-    //funcion de encriptar
+    // Función de encriptar
     function encriptarTexto(texto) {
         return texto.replace(/[eioua]/g, function(match) {
             return llavesEncriptacion[match];
         });
     }
 
-    //funcion de desencriptar
+    // Función de desencriptar
     function desencriptarTexto(texto) {
         return texto.replace(/enter|imes|ai|ober|ufat/g, function(match) {
             return llavesDesencriptacion[match];
         });
     }
 
-        function mostrarMensaje(mensaje) {
+    function mostrarMensaje(mensaje) {
         mensajeEncriptadoDiv.innerHTML = `<p>${mensaje}</p>`;
         botonCopiar.style.display = 'block';
-        imagenRobot.classList.add('oculto'); //Esta funcion me oculta la imagen del robot
+        imagenRobot.classList.add('oculto'); // Esta función me oculta la imagen del robot
     }
 
     function mostrarMensajeDefault() {
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         imagenRobot.classList.remove('oculto');
     }
 
-    //activa boton encriptar
+    // Activa botón encriptar
     botonEncriptar.addEventListener('click', function() {
         let entrada = textoEntrada.value;
         if (entrada) {
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    //activa boton desencriptar
+    // Activa botón desencriptar
     botonDesencriptar.addEventListener('click', function() {
         let entrada = textoEntrada.value;
         if (entrada) {
@@ -73,14 +73,17 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    //activa boton copiar al portapapeles
+    // Activa botón copiar al portapapeles
     botonCopiar.addEventListener('click', function() {
         let textoEncriptado = mensajeEncriptadoDiv.innerText;
         navigator.clipboard.writeText(textoEncriptado).then(function() {
             alert('Texto copiado al portapapeles');
+            
+            // Limpia textarea y mensaje en la columna derecha
+            textoEntrada.value = '';
+            mostrarMensajeDefault();
         }).catch(function(err) {
             console.error('Error al copiar el texto: ', err);
         });
     });
 });
-
