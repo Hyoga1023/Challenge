@@ -1,11 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="Style/style.css">
+    <title>Encriptador de texto</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="panel-izquierdo">
+            <div class="logo">Encriptador de Texto</div>
+            <textarea placeholder="Ingrese el texto aquí" id="input-text"></textarea>
+            <div class="exclamacion-y-mensaje">
+                <img src="Assets/OIP.png" alt="Simbolo Exclamación">
+                <span class="solo-letras-min">Solo letras minusculas y sin acentos</span>
+            </div>
+            <div class="buttons">
+                <button class="encriptar">Encriptar</button>
+                <button class="desencriptar">Desencriptar</button>
+            </div>
+        </div>
+        <div class="panel-derecho">
+            <img class="imagen" src="Assets/Robot.png" alt="Robot Detective hayando pesquisas">
+            <div id="mensaje-encriptado">
+                <h2>Ningún mensaje fue encontrado</h2>
+                <p>Ingresa el texto que desees encriptar o desencriptar.</p>
+            </div>
+            <button class="copy-button-text" id="copy-button" style="display: none;">Copiar Texto Encriptado</button>
+        </div>
+    </div>
+    <footer class="footer">Desarrollado por Cesar Martinez</footer>
+    <script src="script.js"></script>
 </body>
 </html>
+
