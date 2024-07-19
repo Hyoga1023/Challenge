@@ -13,17 +13,17 @@
     --color-cuaternario: #AEFEFF;
 }
 html, body {
-    width: 100%;
     height: 100%;
     font-family: var(--fuente-Courier);
     background: url('../Assets/6ef4.gif') no-repeat center center fixed;
     background-size: cover;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
     display: flex;
     flex-direction: column;
 }
+
 body {
     display: flex;
     flex-direction: column;
