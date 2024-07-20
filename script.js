@@ -1,4 +1,4 @@
-//Aqui colocare mis constantes
+//aqui van a ir las constantes que usare en mi codigo
 document.addEventListener('DOMContentLoaded', function() {
     const botonEncriptar = document.querySelector('.encriptar');
     const botonDesencriptar = document.querySelector('.desencriptar');
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const botonCopiar = document.getElementById('copy-button');
     const imagenRobot = document.querySelector('.imagen');
 
-//llave de encriptacion
+//llaves de encriptación
     const llavesEncriptacion = {
         'e': 'enter',
         'i': 'imes',
@@ -24,14 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
         'ufat': 'u'
     };
 
-//funcion para Encriptar
+//funcion para encriptar texto
     function encriptarTexto(texto) {
         return texto.replace(/[eioua]/g, function(match) {
             return llavesEncriptacion[match];
         });
     }
 
-//Funcion para Desencriptar
+//funcion para desencriptar texto
     function desencriptarTexto(texto) {
         return texto.replace(/enter|imes|ai|ober|ufat/g, function(match) {
             return llavesDesencriptacion[match];
@@ -51,13 +51,17 @@ document.addEventListener('DOMContentLoaded', function() {
         imagenRobot.classList.remove('oculto');
     }
 
+//determina letras minusculas sin acentos permitiendo espacios
     function validarEntrada(texto) {
-        var regex = /^[a-z]+$/;
+        console.log("Validando entrada:", texto);
+        var regex = /^[a-z\s]+$/;
         return regex.test(texto);
     }
 
+//funcion de los botones
     botonEncriptar.addEventListener('click', function() {
-        let entrada = textoEntrada.value;
+        let entrada = textoEntrada.value.trim();
+        console.log("Entrada para encriptar:", entrada);
         if (entrada && validarEntrada(entrada)) {
             let textoEncriptado = encriptarTexto(entrada);
             mostrarMensaje(textoEncriptado);
@@ -68,7 +72,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     botonDesencriptar.addEventListener('click', function() {
-        let entrada = textoEntrada.value;
+        let entrada = textoEntrada.value.trim();
+        console.log("Entrada para desencriptar:", entrada);
         if (entrada && validarEntrada(entrada)) {
             let textoDesencriptado = desencriptarTexto(entrada);
             mostrarMensaje(textoDesencriptado);
@@ -78,7 +83,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-//Boton de copiado
+//boton de copiado    
     botonCopiar.addEventListener('click', function() {
         let textoEncriptado = mensajeEncriptadoDiv.innerText;
         navigator.clipboard.writeText(textoEncriptado).then(function() {
