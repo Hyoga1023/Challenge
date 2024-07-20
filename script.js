@@ -1,4 +1,4 @@
-//Constantes que usare en el JavaScript
+//Aqui colocare mis constantes
 document.addEventListener('DOMContentLoaded', function() {
     const botonEncriptar = document.querySelector('.encriptar');
     const botonDesencriptar = document.querySelector('.desencriptar');
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const botonCopiar = document.getElementById('copy-button');
     const imagenRobot = document.querySelector('.imagen');
 
-    // Reglas de encriptado
+//llave de encriptacion
     const llavesEncriptacion = {
         'e': 'enter',
         'i': 'imes',
@@ -24,14 +24,14 @@ document.addEventListener('DOMContentLoaded', function() {
         'ufat': 'u'
     };
 
-    // Función de encriptar
+//funcion para Encriptar
     function encriptarTexto(texto) {
         return texto.replace(/[eioua]/g, function(match) {
             return llavesEncriptacion[match];
         });
     }
 
-    // Función de desencriptar
+//Funcion para Desencriptar
     function desencriptarTexto(texto) {
         return texto.replace(/enter|imes|ai|ober|ufat/g, function(match) {
             return llavesDesencriptacion[match];
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function mostrarMensaje(mensaje) {
         mensajeEncriptadoDiv.innerHTML = `<p>${mensaje}</p>`;
         botonCopiar.style.display = 'block';
-        imagenRobot.classList.add('oculto'); // Esta función me oculta la imagen del robot
+        imagenRobot.classList.add('oculto');
     }
 
     function mostrarMensajeDefault() {
@@ -51,35 +51,38 @@ document.addEventListener('DOMContentLoaded', function() {
         imagenRobot.classList.remove('oculto');
     }
 
-    // Activa botón encriptar
+    function validarEntrada(texto) {
+        var regex = /^[a-z]+$/;
+        return regex.test(texto);
+    }
+
     botonEncriptar.addEventListener('click', function() {
         let entrada = textoEntrada.value;
-        if (entrada) {
+        if (entrada && validarEntrada(entrada)) {
             let textoEncriptado = encriptarTexto(entrada);
             mostrarMensaje(textoEncriptado);
         } else {
+            alert("El texto solo debe contener letras minúsculas sin acentos.");
             mostrarMensajeDefault();
         }
     });
 
-    // Activa botón desencriptar
     botonDesencriptar.addEventListener('click', function() {
         let entrada = textoEntrada.value;
-        if (entrada) {
+        if (entrada && validarEntrada(entrada)) {
             let textoDesencriptado = desencriptarTexto(entrada);
             mostrarMensaje(textoDesencriptado);
         } else {
+            alert("El texto solo debe contener letras minúsculas sin acentos.");
             mostrarMensajeDefault();
         }
     });
 
-    // Activa botón copiar al portapapeles
+//Boton de copiado
     botonCopiar.addEventListener('click', function() {
         let textoEncriptado = mensajeEncriptadoDiv.innerText;
         navigator.clipboard.writeText(textoEncriptado).then(function() {
             alert('Texto copiado al portapapeles');
-            
-            // Limpia textarea y mensaje en la columna derecha
             textoEntrada.value = '';
             mostrarMensajeDefault();
         }).catch(function(err) {
