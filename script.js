@@ -8,31 +8,33 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Llaves de encriptación
     const llavesEncriptacion = {
-        'e': 'en1er',
-        'i': 'i2mes',
-        'a': 'ai3',
-        'o': '4ober',
-        'u': 'uf5at'
+        'e': 'xn1er',
+        'i': '!2mes',
+        'a': 'qi3',
+        'o': '4ber',
+        'u': 'uf5at',
+        'y': '6z7'
     };
 
     const llavesDesencriptacion = {
-        'en1er': 'e',
-        'i2mes': 'i',
-        'ai3': 'a',
-        '4ober': 'o',
-        'uf5at': 'u'
+        'xn1er': 'e',
+        '!2mes': 'i',
+        'qi3': 'a',
+        '4ber': 'o',
+        'uf5at': 'u',
+        '6z7': 'y'
     };
 
     // Función para encriptar texto
     function encriptarTexto(texto) {
-        return texto.replace(/[eioua]/g, function(match) {
+        return texto.replace(/[eiouay]/g, function(match) {
             return llavesEncriptacion[match];
         });
     }
 
     // Función para desencriptar texto
     function desencriptarTexto(texto) {
-        return texto.replace(/en1er|i2mes|ai3|4ober|uf5at/g, function(match) {
+        return texto.replace(/xn1er|!2mes|qi3|4ber|uf5at|6z7/g, function(match) {
             return llavesDesencriptacion[match];
         });
     }
