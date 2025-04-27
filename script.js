@@ -9,19 +9,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //llaves de encriptación
     const llavesEncriptacion = {
-        'e': 'enter',
-        'i': 'imes',
-        'a': 'ai',
-        'o': 'ober',
-        'u': 'ufat'
+        'e': 'en1er',
+        'i': 'i2mes',
+        'a': 'ai3',
+        'o': '4ober',
+        'u': 'uf5at'
     };
 
     const llavesDesencriptacion = {
-        'enter': 'e',
-        'imes': 'i',
-        'ai': 'a',
-        'ober': 'o',
-        'ufat': 'u'
+        'en1er': 'e',
+        'i2mes': 'i',
+        'ai3': 'a',
+        '4ober': 'o',
+        'uf5at': 'u'
     };
 
 //funcion para encriptar texto
