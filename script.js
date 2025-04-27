@@ -1,4 +1,3 @@
-//aqui van a ir las constantes que usare en mi codigo
 document.addEventListener('DOMContentLoaded', function() {
     const botonEncriptar = document.querySelector('.encriptar');
     const botonDesencriptar = document.querySelector('.desencriptar');
@@ -7,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const botonCopiar = document.getElementById('copy-button');
     const imagenRobot = document.querySelector('.imagen');
 
-//llaves de encriptación
+    // Llaves de encriptación
     const llavesEncriptacion = {
         'e': 'en1er',
         'i': 'i2mes',
@@ -24,14 +23,14 @@ document.addEventListener('DOMContentLoaded', function() {
         'uf5at': 'u'
     };
 
-//funcion para encriptar texto
+    // Función para encriptar texto
     function encriptarTexto(texto) {
         return texto.replace(/[eioua]/g, function(match) {
             return llavesEncriptacion[match];
         });
     }
 
-//funcion para desencriptar texto
+    // Función para desencriptar texto
     function desencriptarTexto(texto) {
         return texto.replace(/en1er|i2mes|ai3|4ober|uf5at/g, function(match) {
             return llavesDesencriptacion[match];
@@ -51,14 +50,14 @@ document.addEventListener('DOMContentLoaded', function() {
         imagenRobot.classList.remove('oculto');
     }
 
-//determina letras minusculas sin acentos permitiendo espacios
+    // Modificar validación para permitir letras con tildes, números y espacios
     function validarEntrada(texto) {
         console.log("Validando entrada:", texto);
-        var regex = /^[a-z\s]+$/;
+        var regex = /^[a-záéíóúüñ0-9\s]+$/i; // Acepta letras con tildes, números y espacios
         return regex.test(texto);
     }
 
-//funcion de los botones
+    // Función de los botones
     botonEncriptar.addEventListener('click', function() {
         let entrada = textoEntrada.value.trim();
         console.log("Entrada para encriptar:", entrada);
@@ -66,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
             let textoEncriptado = encriptarTexto(entrada);
             mostrarMensaje(textoEncriptado);
         } else {
-            alert("El texto solo debe contener letras minúsculas sin acentos.");
+            alert("El texto solo debe contener letras, números, tildes y espacios.");
             mostrarMensajeDefault();
         }
     });
@@ -78,12 +77,12 @@ document.addEventListener('DOMContentLoaded', function() {
             let textoDesencriptado = desencriptarTexto(entrada);
             mostrarMensaje(textoDesencriptado);
         } else {
-            alert("El texto solo debe contener letras minúsculas sin acentos.");
+            alert("El texto solo debe contener letras, números, tildes y espacios.");
             mostrarMensajeDefault();
         }
     });
 
-//boton de copiado    
+    // Botón de copiado    
     botonCopiar.addEventListener('click', function() {
         let textoEncriptado = mensajeEncriptadoDiv.innerText;
         navigator.clipboard.writeText(textoEncriptado).then(function() {
