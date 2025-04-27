@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 //funcion para desencriptar texto
     function desencriptarTexto(texto) {
-        return texto.replace(/enter|imes|ai|ober|ufat/g, function(match) {
+        return texto.replace(/en1er|i2mes|ai3|4ober|uf5at/g, function(match) {
             return llavesDesencriptacion[match];
         });
     }
